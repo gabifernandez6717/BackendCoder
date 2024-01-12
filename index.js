@@ -44,15 +44,19 @@ app.get('/productsLimit', (req,res)=>{
         let productsToSend=[]
         for (let index = 0; index < limit; index++) {
             const element = productmanager.getProductById(index+1)
-            productsToSend.push(element)
-        }
+            if (productsToSend.length<productmanager.producto.length) {
+                productsToSend.push(element);
+            }        }
         res.send(`
         <div>
             <h1 style="color:red">
-                Cantidad de productos: ${limit}
+                Limite de productos disponibles:${productmanager.producto.length}${`\n`}
             </h1>
+            <h2>
+                Cantidad de productos: ${limit}
+            </h2>
             <h2 style="color:green">
-                ${productsToSend}
+                ${productsToSend.join("\n")} <!-- Convertir el array en una cadena -->
             </h2>
         </div>
         `)
