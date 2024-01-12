@@ -1,0 +1,20 @@
+[
+  {
+    "title": "el rey leon",
+    "description": "un libro de reyes leones",
+    "price": 700,
+    "thumbnail": "www.elrey.com",
+    "code": 123,
+    "stock": 10,
+    "idAutoincrementable": 1
+  },
+  {
+    "title": "la bella y la besta",
+    "description": "un libro de bella y bestia",
+    "price": 500,
+    "thumbnail": "www.labestia.com",
+    "code": 456,
+    "stock": 5,
+    "idAutoincrementable": 2
+  }
+]

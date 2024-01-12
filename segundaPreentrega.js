@@ -1,4 +1,4 @@
-const fs = require('fs') // Manejar el sistema de archivos
+const fs = require('fs') // Manejar el sistema de archivo
 
 class ProductManager {
     constructor(filePath) {
@@ -28,9 +28,11 @@ class ProductManager {
         }
     }
 
-    getproducts(){
+    getProducts(){
         if (this.producto.length) {
-            let oldProducts= this.producto.forEach(products=>console.log(products))
+            let oldProducts= this.producto.map(product=>{
+                return ` \n ID: ${product.idAutoincrementable}, Title: ${product.title}, Price: ${product.price}`
+            })
             return oldProducts
         }
         else{
@@ -39,13 +41,14 @@ class ProductManager {
     }
 
     getProductById(id){
-
-        let productById=this.producto.find((producto)=>producto.idAutoincrementable===id)
+        let productById=this.producto.find((producto)=>producto.idAutoincrementable==id)
         if(productById){
-            console.log(productById)
+            
+            return JSON.stringify(productById)
         }
         if(!productById){
             console.log(`${id} Not found`)
+            return (`${id} Not found`)
         }
     }
 
@@ -88,32 +91,31 @@ class ProductManager {
         fs.writeFileSync(this.filePath, JSON.stringify(this.producto, null, 2), 'utf8')
     }
 }
+module.exports = ProductManager
 
-const products = new ProductManager('aca va la ruta del archivo json')
-
+const products = new ProductManager('products.JSON')
 //añadir productos
 products.addProduct('el rey leon', 'un libro de reyes leones', 600, 'www.elrey.com', 123, 8)
 products.addProduct('la bella y la besta', 'un libro de bella y bestia', 500, 'www.labestia.com', 456, 5)
 
 console.log('-------------------------------------------------------')
 
-//obtener todos los productos
-products.getproducts()
+// //obtener todos los productos
+// products.getProducts()
+// console.log('-------------------------------------------------------')
+// //obtener producto por el ID
+// products.getProductById(2)
+// // Ejemplo de uso de los nuevos métodos
+// console.log('-------------------------------------------------------')
+// products.updateProduct(1, { price: 700, stock: 10 }); // Actualizar precio y stock del producto con ID 1
+// console.log('-------------------------------------------------------')
+// // products.deleteProduct(2); // Eliminar el producto con ID 2
+// // products.deleteProduct(1); // Eliminar el producto con ID 2
+// console.log('-------------------------------------------------------')
+// products.getProducts(); // Mostrar todos los productos después de las operaciones
 
-console.log('-------------------------------------------------------')
 
-//obtener producto por el ID
-products.getProductById(2)
 
-// Ejemplo de uso de los nuevos métodos
-console.log('-------------------------------------------------------')
 
-products.updateProduct(1, { price: 700, stock: 10 }); // Actualizar precio y stock del producto con ID 1
 
-console.log('-------------------------------------------------------')
 
-products.deleteProduct(2); // Eliminar el producto con ID 2
-
-console.log('-------------------------------------------------------')
-
-products.getproducts(); // Mostrar todos los productos después de las operaciones
