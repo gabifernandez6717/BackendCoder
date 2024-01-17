@@ -9,13 +9,29 @@ app.get('/bienvenida', (req,res)=>{
     res.send('<div><h1 style="color: blue">Hola mundo</h1></div>')
 })
 
-//Todos los productos, URL: http://localhost:8080/products
+//Todos los productos: http://localhost:8080/products , o con un limite: http://localhost:8080/products?limit=...
 app.get('/products', (req,res)=>{
-    const productos=productmanager.getProducts()
+    const limit= req.query.limit //Busca el limite
+    let productos=productmanager.getProducts()//Obtiene los productos
+    const cantidadDeProductos= productos.length//Guarda cuantos productos hay
+    let mensaje="Todos los productos"
+
+    if (limit <= productos.length)//Verifica que no se solicite mas productos que los disponibles
+    {
+        if (limit) {
+            let productsLimit= productos.slice(0, parseInt(limit))//Extrae una porcion de el array con el limite
+            mensaje=`Limite de productos: ${limit} <br> Cantidad de productos disponibles: ${cantidadDeProductos}`
+            productos=productsLimit
+        }
+    }else{
+        mensaje = `Los productos disponibles son ${cantidadDeProductos}`//En caso que se soliciten mas productos de los que hay se muestra este mensaje y todos los productos
+    }
+
+
     res.send(`
     <div>
         <h1 style="color: red">
-            Todos los productos
+            ${mensaje}
         </h1>
         <h2 style="color: blue">
             ${productos}
@@ -36,30 +52,6 @@ app.get('/products/:id', (req,res)=>{
             ${product}
         </h2>
     </div>`)
-})
-
-//Mostrar un limite de productos, URL: http://localhost:8080/products?limit=...
-app.get('/productsLimit', (req,res)=>{
-        let limit= Number(req.query.limit)//lo convierte a Number para usarlo en getProductById
-        let productsToSend=[]
-        for (let index = 0; index < limit; index++) {
-            const element = productmanager.getProductById(index+1)
-            if (productsToSend.length<productmanager.producto.length) {
-                productsToSend.push(element);
-            }        }
-        res.send(`
-        <div>
-            <h1 style="color:red">
-                Limite de productos disponibles:${productmanager.producto.length}${`\n`}
-            </h1>
-            <h2>
-                Cantidad de productos: ${limit}
-            </h2>
-            <h2 style="color:green">
-                ${productsToSend.join("\n")} <!-- Convertir el array en una cadena -->
-            </h2>
-        </div>
-        `)
 })
 
 
