@@ -37,11 +37,12 @@ class ProductManager {
         }
         else{
             console.log('No hay productos')
+            return []
         }
     }
 
     getProductById(id){
-        let productById=this.producto.find((producto)=>producto.idAutoincrementable===id)
+        let productById=this.producto.find((producto)=>producto.idAutoincrementable==id)
         if(productById){
             return JSON.stringify(productById)
         }
@@ -90,7 +91,7 @@ class ProductManager {
         fs.writeFileSync(this.filePath, JSON.stringify(this.producto, null, 2), 'utf8')
     }
 }
-module.exports = ProductManager
+module.exports = ProductManager//Se exporta
 
 const products = new ProductManager('products.JSON')
 
@@ -111,29 +112,21 @@ products.addProduct('El código Da Vinci','Thriller de misterio escrito por Dan 
 console.log('-------------------------------------------------------')
 
 //obtener todos los productos
-products.getProducts()
+console.log(products.getProducts())
 
-console.log('-------------------------------------------------------')
+// console.log('-------------------------------------------------------')
 
 //obtener producto por el ID
-products.getProductById(2)
+console.log(products.getProductById(4))
 
 console.log('-------------------------------------------------------')
-
 // Actualizar precio y stock del producto con ID 1
-products.updateProduct(1, { price: 700, stock: 10 })
+products.updateProduct(1, { price: 800, stock: 10 })
 
 console.log('-------------------------------------------------------')
+//Eliminar el producto con ID
+products.deleteProduct(4); // Eliminar el producto con ID 4
 
-// Eliminar el producto con ID
-// products.deleteProduct(2); // Eliminar el producto con ID 2
-//console.log('-------------------------------------------------------')
-
+console.log('-------------------------------------------------------')
 // Mostrar todos los productos después de las operaciones
-products.getProducts() 
-
-
-
-
-
-
+console.log(products.getProducts())
