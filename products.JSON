@@ -1,1 +1,122 @@
-[]
+[
+  {
+    "title": "el rey leon",
+    "description": "un libro de reyes leones",
+    "price": 800,
+    "thumbnail": "www.elrey.com",
+    "code": 123,
+    "stock": 10,
+    "idAutoincrementable": 1,
+    "status": true
+  },
+  {
+    "title": "la bella y la besta",
+    "description": "un libro de bella y bestia",
+    "price": 500,
+    "thumbnail": "www.labestia.com",
+    "code": 456,
+    "stock": 5,
+    "idAutoincrementable": 2,
+    "status": true
+  },
+  {
+    "title": "Cien años de soledad",
+    "description": "Obra maestra del realismo mágico escrita por Gabriel García Márquez.",
+    "price": 30,
+    "thumbnail": "www.libro1.com",
+    "code": 124,
+    "stock": 50,
+    "idAutoincrementable": 3,
+    "status": true
+  },
+  {
+    "title": "El Hobbit",
+    "description": "Aventuras de Bilbo Bolsón escritas por J.R.R. Tolkien.",
+    "price": 18,
+    "thumbnail": "www.libro3.com",
+    "code": 789,
+    "stock": 40,
+    "idAutoincrementable": 5,
+    "status": true
+  },
+  {
+    "title": "Matar a un ruiseñor",
+    "description": "Novela clásica escrita por Harper Lee sobre injusticia racial.",
+    "price": 35,
+    "thumbnail": "www.libro4.com",
+    "code": 234,
+    "stock": 20,
+    "idAutoincrementable": 6,
+    "status": true
+  },
+  {
+    "title": "Don Quijote de la Mancha",
+    "description": "Obra maestra de la literatura española escrita por Miguel de Cervantes.",
+    "price": 28,
+    "thumbnail": "www.libro5.com",
+    "code": 567,
+    "stock": 45,
+    "idAutoincrementable": 7,
+    "status": true
+  },
+  {
+    "title": "Orgullo y prejuicio",
+    "description": "Clásico de Jane Austen que aborda temas de amor y clase social.",
+    "price": 15,
+    "thumbnail": "www.libro6.com",
+    "code": 890,
+    "stock": 60,
+    "idAutoincrementable": 8,
+    "status": true
+  },
+  {
+    "title": "Crónica de una muerte anunciada",
+    "description": "Relato de Gabriel García Márquez sobre un asesinato premeditado.",
+    "price": 42,
+    "thumbnail": "www.libro7.com",
+    "code": 345,
+    "stock": 25,
+    "idAutoincrementable": 9,
+    "status": true
+  },
+  {
+    "title": "Harry Potter y la piedra filosofal",
+    "description": "Primera entrega de la famosa serie escrita por J.K. Rowling.",
+    "price": 20,
+    "thumbnail": "www.libro8.com",
+    "code": 678,
+    "stock": 35,
+    "idAutoincrementable": 10,
+    "status": true
+  },
+  {
+    "title": "Sapiens: De animales a dioses",
+    "description": "Historia de la humanidad escrita por Yuval Noah Harari.",
+    "price": 25,
+    "thumbnail": "www.libro9.com",
+    "code": 901,
+    "stock": 55,
+    "idAutoincrementable": 11,
+    "status": true
+  },
+  {
+    "title": "El código Da Vinci",
+    "description": "Thriller de misterio escrito por Dan Brown.",
+    "price": 32,
+    "thumbnail": "www.libro10.com",
+    "code": 125,
+    "stock": 48,
+    "idAutoincrementable": 12,
+    "status": true
+  },
+  {
+    "title": "1984",
+    "description": "Distopía escrita por George Orwell que describe un futuro totalitario.",
+    "price": 22,
+    "thumbnail": "www.libro2.com",
+    "code": 454,
+    "stock": 30,
+    "idAutoincrementable": 12,
+    "status": true
+  }
+]

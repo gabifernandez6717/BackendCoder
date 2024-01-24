@@ -14,7 +14,8 @@ class ProductManager {
             if (!this.producto.some((product)=>product.code===code)) {
                 //generar ID
                 let idAutoincrementable=this.producto.length +1
-                let newProduct={title, description, price, thumbnail, code, stock, idAutoincrementable}
+                let status= true
+                let newProduct={title, description, price, thumbnail, code, stock, idAutoincrementable, status}
                 this.producto.push(newProduct)
                 console.log(`-Libro añadido: ${title}, el id de este producto es ${newProduct.idAutoincrementable}`)
                 this.saveProducts()
