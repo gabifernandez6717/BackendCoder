@@ -1,13 +1,13 @@
 const Router = require('express')
 const CartManager = require('../../cartManager')
 const ProductManager = require('../../productManager')
-const productManager = new ProductManager ('../../products.JSON')
 const cartsManager= new CartManager(`../../cart.json`)
 
 //CRUD de productos (Create, Read, Update, Delete)
 const routerCart= Router()
 
 //Agregar un carrito
+//http://localhost:8080/api/carts/
 routerCart.post('/', async (req, res) => {
     const addCart = await cartsManager.addCart()
     if (addCart) {
@@ -30,13 +30,20 @@ routerCart.post('/', async (req, res) => {
 })
 
 //Agregar un producto a un carrito
+//http://localhost:8080/api/carts/2/product/4
 routerCart.post('/:cid/product/:pid', async (req, res) =>{
     const cartId = Number(req.params.cid)
     const productId = Number(req.params.pid)
     const addProduct = cartsManager.addProductToCart(cartId, productId)
     if (addProduct) {
-        res.status(200).send(
-            console.log(`Producto ${productId} añadido correctamente al cart ${cartId}`)
+        res.status(200).send(`
+            ${console.log(`Producto ${productId} añadido correctamente al cart ${cartId}`)}
+            <div>
+                <h1 style="color: red">
+                    Producto ${productId} añadido correctamente al cart ${cartId}
+                </h1>
+            </div>
+            `
             )
     } else {
         res.status(400).send(
@@ -46,6 +53,8 @@ routerCart.post('/:cid/product/:pid', async (req, res) =>{
 })
 
 //Obtener un cart por su id o todos los carts
+//http://localhost:8080/api/carts?id=5
+//http://localhost:8080/api/carts/
 routerCart.get('/', async (req, res) => {
     const id = Number(req.query.id)//Se obtiene el id como number para poder usarse en getCartId
     if (id) {//Si hay ID muestra ese cart
@@ -96,9 +105,10 @@ routerCart.get('/', async (req, res) => {
 
 
 //Actualizar un carrito
+//http://localhost:8080/api/carts?cartId=1&productId=9
 routerCart.put('/', async (req, res) => {
-    const cartId = req.query.cartId
-    const product = req.query.product
+    const cartId = Number(req.query.cartId)
+    const product = Number(req.query.productId)
     if (cartId && product) {
         const res = await cartsManager.addProductToCart(cartId, {product})
         if (res) {
@@ -125,8 +135,9 @@ routerCart.put('/', async (req, res) => {
 })
 
 // Eliminar un carrito por su ID
+//http://localhost:8080/api/carts/5
 routerCart.delete('/:id', async (req, res) => {
-    const cartId = req.params.id
+    const cartId = Number(req.params.id)
     try {
         // Llama a la función deleteCart con el ID del carrito
         const deletedCart = await cartsManager.deleteCart(cartId)
@@ -140,30 +151,4 @@ routerCart.delete('/:id', async (req, res) => {
         res.status(500).send('Error del servidor')
     }
 })
-// //Borrar un carrito
-// routerCart.delete('/:id', async (req, res) => {
-// const cartId = req.params.id
-// const product = {}
-// if (cartId) {
-//     const respuesta = await cartsManager.addProductToCart(cartId, {product})
-//     if (respuesta) {
-//         res.status(200).send(`
-//             <div>
-//                 <h1 style="color: red">
-//                     Carrito ${cartId} actualizado con éxito
-//                 </h1>
-//             </div>
-//         `)
-//     }
-// } else {
-//     res.status(404).send(
-//         res.status(404).send(`
-//             <div>
-//                 <h1 style="color: red">
-//                     Hubo un error, ingrese el id del carrito
-//                 </h1>
-//             </div>
-//         `))
-// }
-// })
 module.exports = routerCart
