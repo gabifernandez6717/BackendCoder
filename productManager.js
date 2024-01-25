@@ -7,15 +7,15 @@ class ProductManager {
         this.loadProducts() // Cargar productos al inicializar la instancia
     }
 
-    addProduct(title, description, price, thumbnail, code, stock){
+    addProduct(title, description, price, thumbnail, code, stock, category){
         //verificar que esten todos los campos
-        if (title||description||price||thumbnail||code||stock){
+        if (title||description||price||thumbnail||code||stock||category){
             //verificar el code
             if (!this.producto.some((product)=>product.code===code)) {
                 //generar ID
                 let idAutoincrementable=this.producto.length +1
                 let status= true
-                let newProduct={title, description, price, thumbnail, code, stock, idAutoincrementable, status}
+                let newProduct={title, description, price, thumbnail, code, stock, idAutoincrementable, status, category}
                 this.producto.push(newProduct)
                 console.log(`-Libro añadido: ${title}, el id de este producto es ${newProduct.idAutoincrementable}`)
                 this.saveProducts()
@@ -97,18 +97,18 @@ module.exports = ProductManager//Se exporta
 const products = new ProductManager('products.JSON')
 
 //añadir productos
-products.addProduct('el rey leon', 'un libro de reyes leones', 600, 'www.elrey.com', 123, 8)
-products.addProduct('la bella y la besta', 'un libro de bella y bestia', 500, 'www.labestia.com', 456, 5)
-products.addProduct('Cien años de soledad','Obra maestra del realismo mágico escrita por Gabriel García Márquez.',30,'www.libro1.com',124,50)
-products.addProduct('1984','Distopía escrita por George Orwell que describe un futuro totalitario.',22,'www.libro2.com',454,30)
-products.addProduct('El Hobbit','Aventuras de Bilbo Bolsón escritas por J.R.R. Tolkien.',18,'www.libro3.com',789,40)
-products.addProduct('Matar a un ruiseñor','Novela clásica escrita por Harper Lee sobre injusticia racial.',35,'www.libro4.com',234,20)
-products.addProduct('Don Quijote de la Mancha','Obra maestra de la literatura española escrita por Miguel de Cervantes.',28,'www.libro5.com',567,45)
-products.addProduct('Orgullo y prejuicio','Clásico de Jane Austen que aborda temas de amor y clase social.',15,'www.libro6.com',890,60)
-products.addProduct('Crónica de una muerte anunciada','Relato de Gabriel García Márquez sobre un asesinato premeditado.',42,'www.libro7.com',345,25)
-products.addProduct('Harry Potter y la piedra filosofal','Primera entrega de la famosa serie escrita por J.K. Rowling.',20,'www.libro8.com',678,35)
-products.addProduct('Sapiens: De animales a dioses','Historia de la humanidad escrita por Yuval Noah Harari.',25,'www.libro9.com',901,55)
-products.addProduct('El código Da Vinci','Thriller de misterio escrito por Dan Brown.',32,'www.libro10.com',125,48)
+products.addProduct('el rey leon', 'un libro de reyes leones', 600, 'www.elrey.com', 123, 8, 'Ficción Infantil')
+products.addProduct('la bella y la besta', 'un libro de bella y bestia', 500, 'www.labestia.com', 456, 5, 'Ficción Infantil')
+products.addProduct('Cien años de soledad','Obra maestra del realismo mágico escrita por Gabriel García Márquez.',30,'www.libro1.com',124,50, 'Ficción Clásica')
+products.addProduct('1984','Distopía escrita por George Orwell que describe un futuro totalitario.',22,'www.libro2.com',454,30, 'Distopía')
+products.addProduct('El Hobbit','Aventuras de Bilbo Bolsón escritas por J.R.R. Tolkien.',18,'www.libro3.com',789,40, 'Fantasía')
+products.addProduct('Matar a un ruiseñor','Novela clásica escrita por Harper Lee sobre injusticia racial.',35,'www.libro4.com',234,20, 'Ficción Clásica')
+products.addProduct('Don Quijote de la Mancha','Obra maestra de la literatura española escrita por Miguel de Cervantes.',28,'www.libro5.com',567,45, 'Ficción Clásica')
+products.addProduct('Orgullo y prejuicio','Clásico de Jane Austen que aborda temas de amor y clase social.',15,'www.libro6.com',890,60, 'Ficción Clásica')
+products.addProduct('Crónica de una muerte anunciada','Relato de Gabriel García Márquez sobre un asesinato premeditado.',42,'www.libro7.com',345,25,'Ficción Clásica')
+products.addProduct('Harry Potter y la piedra filosofal','Primera entrega de la famosa serie escrita por J.K. Rowling.',20,'www.libro8.com',678,35, 'Fantasía')
+products.addProduct('Sapiens: De animales a dioses','Historia de la humanidad escrita por Yuval Noah Harari.',25,'www.libro9.com',901,55,'Historia')
+products.addProduct('El código Da Vinci','Thriller de misterio escrito por Dan Brown.',32,'www.libro10.com',125,48, 'Historia')
 
 console.log('-------------------------------------------------------')
 

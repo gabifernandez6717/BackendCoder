@@ -46,11 +46,31 @@ class CartManager {
         return cart
     }
 
+    // Eliminar un carrito por su ID
+    deleteCart = async (cartId) => {
+        try {
+            const carts = await this.getCarts()//Obtiene todos los carts
+            const cartIndex = carts.findIndex((cart) => cart.id === cartId)//Busca el cart a eliminar
+            if (cartIndex !== -1) {
+                const deletedCart = carts.splice(cartIndex, 1)[0]//Si existe lo elimina
+                this.saveProducts()// Guardar después de eliminar el carrito
+                console.log(`Carrito con ID ${cartId} eliminado`)
+                return deletedCart
+            } else {
+                console.log(`No se encontró el carrito con ID ${cartId}`)
+                return null
+            }
+        } catch (error) {
+            console.error(`Error al eliminar el carrito con ID ${cartId}: ${error}`)
+            return null
+        }
+    }
+
     //Obtener los productos de un carrito
     getCartProducts = async (id) => {
-        const carts = await this.getCarts()
+        const carts = await this.getCarts()//Obtiene todos los productos
         if (carts) {
-            const cart = carts.find(cart => cart.id === id)
+            const cart = carts.find(cart => cart.id === id)//Busca el que coincida
             if (cart) {
                 console.log(`Productos del carrito ${id}:`, cart.products)
                 return cart.products
@@ -97,6 +117,7 @@ class CartManager {
             return null
         }
     }
+
 }
 
 module.exports = CartManager
@@ -108,6 +129,9 @@ carrito.addCart()
 carrito.addCart()
 carrito.addCart()
 carrito.addCart()
+console.log('------------agregar carrito------------')
+//Eliminar un carrito
+carrito.deleteCart(1)
 console.log('------------agregar carrito------------')
 
 // Añadir productos al carrito con ID 2
