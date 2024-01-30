@@ -5,6 +5,7 @@ const productManager=new ProductManager (`../../products.JSON`)
 
 //Crud de productos (Create, Read, Update, Delete)
 const routerProd= Router()
+
 //Todos los productos o con un limite
 routerProd.get('/', async(req, res)=>{
     const limit= req.query.limit //Busca el limite
@@ -30,7 +31,7 @@ routerProd.get('/', async(req, res)=>{
             <h2 style="color: blue">
                 ${productos}
             </h2>
-        </div> `)
+        </div> `).render('home')
     }else{
         res.status(404).send(`
             <div>

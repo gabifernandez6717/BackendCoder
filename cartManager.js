@@ -132,7 +132,7 @@ carrito.addCart()
 console.log('------------agregar carrito------------')
 //Eliminar un carrito
 carrito.deleteCart(1)
-console.log('------------agregar carrito------------')
+console.log('------------eliminar carrito------------')
 
 // Añadir productos al carrito con ID 2
 carrito.addProductToCart(2, { id: 1, name: 'Producto 1', price: 10 })
