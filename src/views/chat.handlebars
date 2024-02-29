@@ -1,0 +1,17 @@
+
+    <div id="chat-container">
+        <h1>Chat</h1>
+        <div id="messages-container"></div>
+        <div id="input-container">
+            <form onsubmit=" return addMessages()">
+                <input type="text" id="name-input" placeholder="Nombre">
+                <input type="text" id="message-input" placeholder="Mensaje">
+                <input type="submit" id="send-button" value="Enviar" >
+            </form>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../public/styles.css"></script>
+    <script src="../public/index.js"></script>
+
+

@@ -1,0 +1,47 @@
+
+    <div id="RealTimeContainer">
+        <h1>
+            Hola, {{name}}!
+        </h1>
+
+        <div class="input-container">
+            {{!-- Agregar productos --}}
+            <form>
+                <h3>Agregar un producto al cart</h3>
+                <input type="text" id="idCartInput" placeholder="ID de cart">
+                <input type="text" id="idProductInput" placeholder="ID de producto">
+                <input type="button" id="agregarProducto" value="Agregar" onclick="addProductToCart()">
+            </form>
+        </div>
+
+        <div>
+            <h2>
+                Productos despues de haber agregado:
+            </h2>
+        </div>
+
+        {{!-- Mostrar productos --}}
+        <div id="ProductsContainer"></div>
+        <hr>
+
+        <div class="input-container">
+            {{!-- Borrar productos --}}
+            <form>
+                <h3>Borrar un producto al cart</h3>
+                <input type="text" id="idCartInputD" placeholder="ID de cart">
+                <input type="text" id="idProductInputD" placeholder="ID de producto">
+                <input type="button" id="borrarProducto" value="Borrar" onclick="deleteProductToCart()">
+            </form>
+        </div>
+
+        <div>
+            <h2>
+                Productos despues de haber eliminado:
+            </h2>
+        </div>
+        <div id="ProductsContainerD"></div>
+        <hr>
+    </div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="../public/index.js"></script>

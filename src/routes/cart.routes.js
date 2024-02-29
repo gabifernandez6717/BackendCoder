@@ -1,7 +1,6 @@
 const Router = require('express')
 const CartManager = require('../../cartManager')
-const ProductManager = require('../../productManager')
-const cartsManager= new CartManager(`../../cart.json`)
+const cartsManager= new CartManager('../../cart.json')
 
 //CRUD de productos (Create, Read, Update, Delete)
 const routerCart= Router()
