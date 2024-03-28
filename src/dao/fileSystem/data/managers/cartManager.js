@@ -19,19 +19,6 @@ class CartManager {
         fs.writeFileSync(this.path, JSON.stringify(this.carts, null, 2), 'utf8')
     }
 
-    // //Leer productos
-    // readProductsSync() {
-    //     console.log('Se ejecutó readProductsSync (cartManager.js)')
-    //     console.log('LINEA 25: ' +  fs.readFileSync(this.path, 'utf8'))
-    //     try {
-    //         const response = fs.readFileSync(this.path, 'utf8')
-    //         console.log('Se ejecutó readProductsSync (cartManager.js): ' + response)
-    //         return JSON.parse(response)
-    //     } catch (error) {
-    //         console.log('Error al leer el archivo:', error)
-    //         return null
-    //     }
-    // }
         //Leer productos
         readProductsSync() {
             console.log('Se ejecutó readProductsSync (cartManager.js)')
@@ -219,19 +206,3 @@ class CartManager {
 }
 
 module.exports = CartManager
-
-// const carrito = new CartManager('cart.json')
-// carrito.readProductsSync()
-// carrito.readProductsSync()
-// carrito.addCart()
-// carrito.addCart()
-// carrito.addCart()
-// carrito.addProductToCart(1,2)
-// carrito.addProductToCart(1,2)
-// carrito.addProductToCart(1,2)
-// carrito.addProductToCart(1,2)
-// carrito.readProductsSync()
-// carrito.readProductsSync()
-// carrito.deleteCarts()
-// carrito.readProductsSync()
-// carrito.readProductsSync()
