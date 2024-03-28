@@ -1,29 +1,13 @@
 const express = require('express')
 const {Router} = express
 const realTimeProducts = Router()
-// const CartManager = require('../../cartManager')
-// const cartmanager = new CartManager('../../cart.json')
-
-// //Borrar los carritos
-// cartmanager.deleteCarts()
-
-// // Añadir un carrito
-// cartmanager.addCart()
-// cartmanager.addCart()
-// cartmanager.addCart()
-
-// // Al carrito con ID=1 añadir productos con ID= 4
-// cartmanager.addProductToCart(1, 4)
-
-// // Al carrito con ID=2 añadir dos productos con ID= 4 y 3
-// cartmanager.addProductToCart(2, 4)
-
-// http://localhost:8080/realTimeProducts
+// http://localhost:8080/realTimeProducts?name=Gabi
 realTimeProducts.get('/', async (req, res) => {
+    const name = req.query.name
         res.render(
             'realTimeProducts',
             {
-                name: 'Gabi'
+                name: name
             }
             )
         })

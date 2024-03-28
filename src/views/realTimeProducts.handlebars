@@ -1,9 +1,17 @@
-
     <div id="RealTimeContainer">
-        <h1>
-            Hola, {{name}}!
-        </h1>
-
+        <div>
+            <div>
+                <h1>
+                    Hola, {{name}}!
+                </h1>
+                <h2>
+                    Productos:
+                </h2>
+            </div>
+            {{!-- Mostrar productos --}}
+            <h3 id="ProductsContainer"></h3>
+            <hr>
+        </div>
         <div class="input-container">
             {{!-- Agregar productos --}}
             <form>
@@ -13,17 +21,6 @@
                 <input type="button" id="agregarProducto" value="Agregar" onclick="addProductToCart()">
             </form>
         </div>
-
-        <div>
-            <h2>
-                Productos despues de haber agregado:
-            </h2>
-        </div>
-
-        {{!-- Mostrar productos --}}
-        <div id="ProductsContainer"></div>
-        <hr>
-
         <div class="input-container">
             {{!-- Borrar productos --}}
             <form>
@@ -33,14 +30,6 @@
                 <input type="button" id="borrarProducto" value="Borrar" onclick="deleteProductToCart()">
             </form>
         </div>
-
-        <div>
-            <h2>
-                Productos despues de haber eliminado:
-            </h2>
-        </div>
-        <div id="ProductsContainerD"></div>
-        <hr>
     </div>
 
 <script src="/socket.io/socket.io.js"></script>

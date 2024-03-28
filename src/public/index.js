@@ -3,24 +3,13 @@ const socket = io()
 
 //Funcion para renderizar en el front los productos agregados
 const render =  (data)=>{
-    const output = data
+    const output = JSON.stringify(data, null, 2)
     document.getElementById('ProductsContainer').innerHTML = output
     }
 
-//Funcion para renderizar en el front los productos eliminados
-const renderD =  (data)=>{
-    const output = data
-    document.getElementById('ProductsContainerD').innerHTML = output
-    }
-
-//Escucha el servidor (productos agregados)
-socket.on("products", (data)=>{
+//Escucha el servidor
+socket.on("chat", (data)=>{
     render(data)//Le pasa la data a la funcion render para verla en el front
-})
-
-//Escucha el servidor (productos eliminados)
-socket.on("productsD", (data)=>{
-    renderD(data)//Le pasa la data a la funcion renderD para verla en el front
 })
 
 //Agregar producto al cart
